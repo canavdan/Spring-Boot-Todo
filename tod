@@ -1,0 +1,14 @@
+Örnek timestamp: 2019-07-24 22:28:34.553
+
+EKLEME
+
+{
+	"priority":"2",
+	"name":"TesasadtpA",
+	"user": {
+        "id":"1"
+    },
+    "status": {
+        "id":"1"
+    }
+}
