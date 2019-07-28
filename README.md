@@ -3,7 +3,7 @@
 This to-do app uses react and redux.
 This is the front-end part.
 You can access the back-end part : 
-
+https://github.com/canavdan/react-redux-todo
 
 In this project :
 - You can add new to-do list and to-do item,
