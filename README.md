@@ -1,4 +1,4 @@
-## Description off the project
+# Description off the project
 
 This to-do app uses react and redux.
 This is the front-end part.
