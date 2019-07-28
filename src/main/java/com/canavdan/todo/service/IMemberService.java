@@ -10,5 +10,6 @@ public interface IMemberService {
     Member saveOrUpdateMember(Member member);
     List<Member> findAllMembers();
     Optional<Member> findMemberById(Long id);
-
+    boolean existsByUsernameAndPassword(String username,String password);
+    Member findMemberByUsernameAndPassword(String username,String password);
 }

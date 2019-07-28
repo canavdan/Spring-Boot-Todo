@@ -40,4 +40,13 @@ public class TodoListService implements ITodoListService{
     public void deleteTodoList(Long id) {
     todoListRepository.deleteById(id);
     }
+
+    @Override
+    public List<TodoList> findAllByMemberId(Long id) {
+        List<TodoList> todoList= todoListRepository.findAllByMemberId(id);
+        if(todoList == null)
+            throw new ResourceNotFoundException("To-Do List does not exist");
+        return todoList;
+
+    }
 }

@@ -18,6 +18,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/todolist")
 @Slf4j
+@CrossOrigin
 public class TodoListApi {
 
     @Autowired
@@ -30,9 +31,9 @@ public class TodoListApi {
         List<TodoList> todoList =todoListService.findAllTodoList();
         return new ResponseEntity<List<TodoList>>(todoList, HttpStatus.OK);
     }
-    @GetMapping("/{todoListId]")
-    public  ResponseEntity<?> getTodoListById(@PathVariable Long id){
-        Optional<TodoList> todoList =todoListService.findTodoListById(id);
+    @GetMapping("/{todoListId}")
+    public  ResponseEntity<?> getTodoListById(@PathVariable Long todoListId){
+        Optional<TodoList> todoList =todoListService.findTodoListById(todoListId);
         if (todoList == null) {
             return new ResponseEntity<TodoList>(HttpStatus.NOT_FOUND);
         }
@@ -48,9 +49,19 @@ public class TodoListApi {
         return new ResponseEntity<TodoList>(todoList, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{todoListId]")
-    public ResponseEntity<?> deleteTodoListById(@PathVariable Long id){
-        todoListService.deleteTodoList(id);
-        return new ResponseEntity<String>("Todo Item with ID '"+ id +"' was deleted",HttpStatus.OK);
+    @DeleteMapping("/{todoListId}")
+    public ResponseEntity<?> deleteTodoListById(@PathVariable Long todoListId){
+        todoListService.deleteTodoList(todoListId);
+        return new ResponseEntity<String>("Todo Item with ID '"+ todoListId +"' was deleted",HttpStatus.OK);
     }
+    @GetMapping("/all/{memberId}")
+    public  ResponseEntity<?> getTodoListsByMemberId(@PathVariable Long memberId){
+        List<TodoList> todoList =todoListService.findAllByMemberId(memberId);
+        if (todoList == null) {
+            return new ResponseEntity<TodoList>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<List<TodoList>>(todoList,HttpStatus.OK);
+    }
+
 }

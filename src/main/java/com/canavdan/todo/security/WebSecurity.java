@@ -13,6 +13,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import static com.canavdan.todo.security.SecurityConstants.SIGN_UP_URL;
 
@@ -29,7 +30,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         System.out.println("configure");
-        http.csrf().disable();
+        http.cors().and().csrf().disable();
         http.authorizeRequests().antMatchers("/").permitAll();
 
         /*http.cors().and().csrf().disable().authorizeRequests()

@@ -13,4 +13,5 @@ public interface ITodoListService {
     List<TodoList> findAllTodoList();
     Optional<TodoList> findTodoListById(Long id);
     void deleteTodoList(Long id);
+    List<TodoList> findAllByMemberId(Long id);
 }

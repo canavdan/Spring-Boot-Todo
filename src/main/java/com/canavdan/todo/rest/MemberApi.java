@@ -53,5 +53,14 @@ public class MemberApi {
         memberService.saveOrUpdateMember(member);
         return new ResponseEntity<Member>(member, HttpStatus.CREATED);
     }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(String username,String password,BindingResult result){
+        ResponseEntity<?> errorMap = mapValidationError.MapValidationService(result);
+        if(errorMap!=null) return errorMap;
+        password=(bCryptPasswordEncoder.encode(password));
+        memberService.existsByUsernameAndPassword(username,password);
+        Member member=memberService.findMemberByUsernameAndPassword(username,password);
+        return new ResponseEntity<Member>(member, HttpStatus.CREATED);
+    }
 
 }

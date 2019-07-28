@@ -39,4 +39,13 @@ public class TodoItemService implements ITodoItemService {
     public void deleteTodoItem(Long id) {
         todoItemRepository.deleteById(id);
     }
-}
+
+    @Override
+    public List<TodoItem> findAllByTodoListId(Long id) {
+        List<TodoItem> todoItem= todoItemRepository.findAllByTodoListId(id);
+        if(todoItem == null)
+            throw new ResourceNotFoundException("To-Do Item does not exist");
+        return todoItem;
+    }
+    }
+

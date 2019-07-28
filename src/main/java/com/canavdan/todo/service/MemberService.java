@@ -28,4 +28,14 @@ public class MemberService implements IMemberService {
     public Optional<Member> findMemberById(Long id) {
         return memberRepository.findById(id);
     }
+
+    @Override
+    public boolean existsByUsernameAndPassword(String username, String password) {
+        return memberRepository.existsByUsernameAndPassword(username,password);
+    }
+
+    @Override
+    public Member findMemberByUsernameAndPassword(String username, String password) {
+        return memberRepository.findMemberByUsernameAndPassword(username,password);
+    }
 }
